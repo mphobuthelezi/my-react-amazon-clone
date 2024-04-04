@@ -1,6 +1,7 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState, useContext } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./Login.css";
+import AuthContext from "../context/authContext";
 
 const reducer = (state, action) => {
   if (action.type === "EMAIL_INPUT") {
@@ -14,6 +15,7 @@ const reducer = (state, action) => {
 };
 
 const Login = () => {
+  const ctx = useContext(AuthContext);
   const [FormIsValid, setFormIsValid] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, {
@@ -41,23 +43,23 @@ const Login = () => {
   };
 
   const passwordChangeHandler = (e) => {
-    // setPassword(e.target.value);
-    dispatch({ type: "PASSWORD_INPUT", payload: e.target.value });
+    dispatch({ type: "PASS_INPUT", payload: e.target.value });
   };
 
   const signIn = (e) => {
     e.preventDefault();
     console.log("Entered Email:", state.emailValue);
     console.log("Entered Password:", state.passwordValue);
+    ctx.onLogin(state.emailValue, state.passwordValue);
   };
 
   return (
     <div className="Login">
       <Link to="/">
         <img
-          src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimage.shutterstock.com%2Fimage-photo%2Fimage-260nw-2300329721.jpg&tbnid=7AkN_WZH7PlqSM&vet=12ahUKEwjDzMvVwZyFAxUARKQEHV_WBEgQMygQegQIARBX..i&imgrefurl=https%3A%2F%2Fseeklogo.com%2Fvector-logo%2F480513%2Famazon&docid=IeFY5Y8_qnpdQM&w=557&h=280&q=amazon%20logo%20svg&ved=2ahUKEwjDzMvVwZyFAxUARKQEHV_WBEgQMygQegQIARBX"
+           className="Login_logo"
+          src="http://my.linefor.com/wp-content/uploads/2015/08/amazon.png"
           alt="Amazon_logo"
-          className="Login_logo"
         />
       </Link>
       <div className="login_container">

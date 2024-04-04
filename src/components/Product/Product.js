@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Products.css";
+import ShoppingContext from "../../context/Shopping/shoppingContext";
 
-const product = ({ id, image, title, rating, price }) => {
+const Product = ({ id, image, title, rating, price }) => {
+  const shoppingContext = useContext(ShoppingContext);
+  const { addToBasket } = shoppingContext;
+  const addToBasketHandler = () => {
+    addToBasket({ item: { id, image, title, rating, price } });
+  };
   return (
     <div className="product">
       <img src={image} alt="" />
@@ -9,14 +15,16 @@ const product = ({ id, image, title, rating, price }) => {
       <p>{title}</p>
 
       <div className="product_rating">
-        <p>{rating}</p>
+        <p>{rating}:star:</p>
       </div>
       <p className="product_price">{price}</p>
       <div>
-        <button className="product_button">add to buskets</button>
+        <button className="product_button" onClick={addToBasketHandler}>
+          add to Basket
+        </button>
       </div>
     </div>
   );
 };
 
-export default product;
+export default Product;

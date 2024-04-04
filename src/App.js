@@ -5,8 +5,10 @@ import Products from "./components/Product/Products";
 import Header from "./components/Layouts/Header";
 import ProductsDetails from "./components/Product/ProductsDetails";
 import Login from "./components/Login";
+import NotFound from "./components/NotFound"
 
 const App = () => {
+
   return (
     <div>
       <Header />
@@ -26,6 +28,9 @@ const App = () => {
           </Route>
           <Route path="/Login">
             <Login />
+          </Route>
+          <Route path="/notfound">
+            <NotFound />
           </Route>
         </Switch>
       </main>
