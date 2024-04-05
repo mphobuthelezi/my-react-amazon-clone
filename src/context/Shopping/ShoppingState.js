@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import ShoppingContext from "./shoppingContext";
 import { shoppingReducer } from "./shoppingReducer";
+// import { type } from "@testing-library/user-event/dist/type";
 
 export const ShoppingState = (props) => {
   const initialState = { basket: [], user: null };
@@ -16,6 +17,16 @@ export const ShoppingState = (props) => {
       payload: item,
     });
   };
+
+  const setUser = (user) => {
+    dispatch({
+      type: "SERT_USER",
+      payload: user, 
+    });
+  };
+
+
+
   return (
     <ShoppingContext.Provider
       value={{
@@ -23,6 +34,7 @@ export const ShoppingState = (props) => {
         user: state.user,
         getBasketTotal,
         addToBasket,
+        setUser
       }}
     >
       {props.children}

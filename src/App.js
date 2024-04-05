@@ -1,4 +1,5 @@
 import "./App.css";
+import {useContext, useEffect} from 'react'
 import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Products from "./components/Product/Products";
@@ -6,9 +7,25 @@ import Header from "./components/Layouts/Header";
 import ProductsDetails from "./components/Product/ProductsDetails";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound"
+import ShoppingContext from "./context/Shopping/shoppingContext";
+import { auth } from "./components/Firebase";
+
 
 const App = () => {
+  const shoppingContext = useContext(ShoppingContext);
+  const { setUser } = shoppingContext;
+   useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      console.log("User is -> ", authUser)
 
+      if(authUser) {
+        setUser({authUser})
+      } else {
+        setUser( null)
+      }
+    })
+
+   },[setUser]);
   return (
     <div>
       <Header />

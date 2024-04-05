@@ -4,14 +4,22 @@ import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import AuthContext from "../../context/authContext";
+// import AuthContext from "../../context/authContext";
 import ShoppingContext from "../../context/Shopping/shoppingContext";
+import {auth} from '../Firebase';
+
 
 const Header = () => {
   const shoppingContext = useContext(ShoppingContext);
-  const { basket } = shoppingContext;
+  const { basket, user } = shoppingContext;
 
-  const ctx = useContext(AuthContext);
+  // const ctx = useContext(AuthContext);
+     const handleAuthentication = () => {
+        if(user) {
+            auth.signOut();
+        }
+     };
+
   return (
     <header className="header">
       <Link to="/">
@@ -28,21 +36,15 @@ const Header = () => {
       </div>
 
       <div className="header_nav">
-        {ctx.isLoggedIn ? (
-          <Link to="/">
-            <div className="header_option" onClick={ctx.onLogout}>
-              <span className="header_optionOne">Hello User</span>
-              <span className="header_optionTwo">Sign Out</span>
-            </div>
+          <Link to={!user &&"/login"}>  
+            <div className="header_option" onClick={handleAuthentication}>
+                <span className="header_optionOne">Hello {!user ?
+                 'Guests' : user.email}</span>
+              <span className="header_optionTwo">{user ? 'Sign Out' : 
+              'Sign In'}</span>
+            </div> 
           </Link>
-        ) : (
-          <Link to="/login">
-            <div className="header_option">
-              <span className="header_optionOne">Hello Guests</span>
-              <span className="header_optionTwo">Sign In</span>
-            </div>
-          </Link>
-        )}
+        
         <div className="header_option">
           <span className="header_optionOne">Returns</span>
           <span className="header_optionTwo">& Orders</span>

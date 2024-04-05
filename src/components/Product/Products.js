@@ -21,6 +21,7 @@ const Products = () => {
           rating={5}
           
         />
+        
       </div>
       <div className="products_row">
         <Product

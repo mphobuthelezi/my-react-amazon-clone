@@ -5,7 +5,12 @@ export const shoppingReducer = (state, action) => {
           state,
           basket: [...state.basket, action.payload],
         };
-  
+
+        case  'SET_USER':
+          return {
+            state,
+            user: action.payload,
+          };
       default:
         return state;
     }
