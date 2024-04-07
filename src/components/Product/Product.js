@@ -9,7 +9,7 @@ const Product = ({ id, image, title, rating, price }) => {
     addToBasket({ item: { id, image, title, rating, price } });
   };
   return (
-    <div className="product">
+    <div className="product" key={id}>
       <img src={image} alt="" />
       <div className="product_info"></div>
       <p>{title}</p>
@@ -18,7 +18,7 @@ const Product = ({ id, image, title, rating, price }) => {
         {Array(rating)
         .fill()
         .map((_, i)=> (
-        <p> ⭐ </p>
+        <p key={i}> ⭐ </p>
         ))}
         
       </div>

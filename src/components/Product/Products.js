@@ -6,12 +6,12 @@ const Products = () => {
   return (
     <>
       <div className="products_row">
-        <Product
+        <Product   
           id="1"
           title="Overhead Tripod with Ring Light, Desk Camera Mount with Flexible Arm, Bendable Phone Arm with Clamp for Nail Art Jewelry Video Recording Cookie Decorating"
           image="https://m.media-amazon.com/images/I/61rbY04vHdL._AC_UL480_FMwebp_QL65_.jpg"
           rating={3}
-          price="$27"
+          price="$27.00"
         />
         <Product
           id="2"
