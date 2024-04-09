@@ -44,15 +44,19 @@ const Header = () => {
               'Sign In'}</span>
             </div> 
           </Link>
-        
+        <Link to="/orders">
         <div className="header_option">
           <span className="header_optionOne">Returns</span>
           <span className="header_optionTwo">& Orders</span>
         </div>
-        <div className="header_option">
+        </Link>
+
+          <Link to="/prime">
+          <div className="header_option">
           <span className="header_optionOne">Your</span>
           <span className="header_optionTwo">Prime</span>
         </div>
+          </Link>
         <Link to="/checkout">
         <div className="header_optionBasket">
           <ShoppingBasketIcon className="basket_icon" />
