@@ -16,9 +16,8 @@ import  Payment  from "./components/Payment/Payment";
 import Orders from "./components/Oders";
 import Prime from "./components/Prime";
 
-const promise = loadStripe(
-  "pk_test_51P3Xzk00fWtMgAAfQeLfNGIzK0STwE1atTcjiDaGNTIP0UrAxgAgZmncziby6GXajXN2o0qhgE4apw90f5Br0W1Z00WazjmNsR"
-);
+const stripePromise = loadStripe("pk_test_...");
+
 
 const App = () => {
   const shoppingContext = useContext(ShoppingContext);
@@ -55,8 +54,8 @@ const App = () => {
             <Checkout />
           </Route>
           <Route path="/Payment">
-            <Elements>
-            <Payment stripe={promise} />
+            <Elements stripe={stripePromise}>
+            <Payment />
             </Elements>
           </Route>
           <Route path="/Login">
