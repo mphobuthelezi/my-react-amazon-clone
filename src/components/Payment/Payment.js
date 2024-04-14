@@ -79,7 +79,7 @@ const Payment = () => {
     <div className="payment">
       <div className="payment_container">
         <h1>
-          {" "}
+          {" "} 
           Checkout <Link to="./checkout">{basket?.length} item</Link>
         </h1>
         <div className="payment_section">
