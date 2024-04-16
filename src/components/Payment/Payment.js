@@ -12,6 +12,8 @@ const Payment = () => {
   const shoppingContext = useContext(ShoppingContext);
   const { basket, user, getBasketTotal, emptyBasket } = shoppingContext;
 
+  
+
   const history = useHistory();
   const stripe = useStripe();
   const elements = useElements;
@@ -23,7 +25,7 @@ const Payment = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    //generate the special strip secret
+    //Generate the special strip secret which will allow us to charge the custormer 
     const getClientSecret = async () => {
       
       const getClientSecret = async () => {

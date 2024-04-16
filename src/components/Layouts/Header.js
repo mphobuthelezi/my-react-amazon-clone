@@ -9,7 +9,7 @@ import ShoppingContext from "../../context/Shopping/shoppingContext";
 import {auth} from '../Firebase';
 
 
-const Header = () => {
+const Header = () => {  
   const shoppingContext = useContext(ShoppingContext);
   const { basket, user } = shoppingContext;
 
